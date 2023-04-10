@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Cache\RedisTaggedCache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\ReCaptcha;
 
 
 class LoginController extends Controller
@@ -18,7 +18,8 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'login_id' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
 
 

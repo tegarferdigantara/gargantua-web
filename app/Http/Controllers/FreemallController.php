@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AHTransactions;
-use App\Models\AHCategoryItems;
+use App\Models\AHFreeMalls;
 use App\Models\TItem;
 use App\Models\User;
 
@@ -15,7 +15,7 @@ class FreemallController extends Controller
     public function index()
     {
         return view('dashboard.mall.freemall.index', [
-            'TCategoryItems' => AHCategoryItems::orderBy('category', 'ASC')->paginate(7)->withQueryString()
+            'TCategoryItems' => AHFreeMalls::orderBy('category', 'ASC')->paginate(7)->withQueryString()
         ]);
     }
 
@@ -27,7 +27,7 @@ class FreemallController extends Controller
         ]);
         if ($validatedData['qty'] > 0) {
             $selectpoint = User::select('freepoint')->where('user_id', '=', auth()->user()->user_id)->get();
-            $selectprice = AHCategoryItems::select('price', 'type', 'name', 'img')->where('id', '=', $validatedData['itemID'])->get();
+            $selectprice = AHFreeMalls::select('price', 'type', 'name', 'img')->where('id', '=', $validatedData['itemID'])->get();
 
             $points = collect($selectpoint)->sum('freepoint');
             $price = collect($selectprice)->sum('price');

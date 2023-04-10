@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
+    <div class="page-header">
+        <h3 class="page-title"> RPS - Insert </h3>
+    </div>
     @if (session()->has('status'))
         <div class="alert alert-success alert-dismissible fade show col-md-12" role="alert">
             {{ session('status') }}

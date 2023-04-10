@@ -191,9 +191,22 @@
                                 <div class="dropdown-divider"></div>
                                 <h5 class="preview-subject">
                                     <i class="mdi mdi mdi-brightness-5 text-danger mr-1"></i> FORGE RATE:
-                                    <p class="ml-5 mt-2"> - RARE: 60%</p>
-                                    <p class="ml-5"> - UNIQUE: 40%</p>
+                                    <p class="ml-5 mt-2 mb-0"> - RARE: 60% | - UNIQUE: 40%</p>
                                     <p class="ml-5"> - ANCIENT: 20%</p>
+                                </h5>
+                                <div class="dropdown-divider"></div>
+                                <h5 class="preview-subject">
+                                    <i class="mdi mdi mdi-brightness-5 text-danger mr-1"></i> ACCESSORIES RATE:
+                                    <p class="ml-5 mt-2 mb-0"> - 1-5: 60% | - 14: 10%</p>
+                                    <p class="ml-5 mb-0"> - 6-8: 90% | - 15-17: 1% </p>
+                                    <p class="ml-5"> - 9-13: 80% | -18: 0.3%</p>
+                                </h5>
+                                <div class="dropdown-divider"></div>
+                                <h5 class="preview-subject">
+                                    <i class="mdi mdi mdi-brightness-5 text-danger mr-1"></i> REINFORCEMENT RATE:
+                                    <p class="ml-5 mt-2 mb-0"> - 1-2: 100% | - 12-13: 20%</p>
+                                    <p class="ml-5 mb-0"> - 3-5: 90% | - 14: 10% </p>
+                                    <p class="ml-5"> - 6-11: 80% | - 15-17: 1%</p>
                                 </h5>
                             </div>
                         </div>

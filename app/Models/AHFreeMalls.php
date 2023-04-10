@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AHCategoryItems extends Model
+class AHFreeMalls extends Model
 {
     use HasFactory;
 
@@ -13,5 +13,5 @@ class AHCategoryItems extends Model
 
     protected $connection = 'sqlsrv2';
 
-    protected $table = "AHCategoryItems";
+    protected $table = "AHFreeMalls";
 }

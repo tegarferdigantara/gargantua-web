@@ -10,6 +10,7 @@ use App\Http\Controllers\PointsController;
 use App\Http\Controllers\ItemmallController;
 use App\Http\Controllers\FreemallController;
 use App\Http\Controllers\TransactionsController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/transaction', [TransactionsController::class, 'show'])->name('transaction');
 
     Route::get('/dashboard/admin', [AdminController::class, 'index']);
+    Route::post('/dashboard/admin', [AdminController::class, 'isMaintenance']);
     Route::resource('/dashboard/admin/rps', PointsController::class)->except(['show', 'destroy', 'edit', 'update']);
     // Route::resource('/dashboard/admin/itemmall', TCategoryItemsController::class);
 });

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('sqlsrv2')->create('AHCategoryItems', function (Blueprint $table) {
+        Schema::connection('sqlsrv2')->create('AHFreeMalls', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
             $table->bigInteger('price');
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('description', 100);
             $table->string('img', 50);
             $table->string('category', 50);
-            $table->tinyInteger('freemall');
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('AHCategoryItems');
+        Schema::dropIfExists('AHFreeMalls');
     }
 };

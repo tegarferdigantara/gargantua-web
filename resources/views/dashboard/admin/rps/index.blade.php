@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
+    <div class="page-header">
+        <h3 class="page-title"> RPS - Show </h3>
+    </div>
     @if (session()->has('status'))
         <div class="alert alert-success alert-dismissible fade show col-md-12" role="alert">
             {{ session('status') }}
@@ -79,8 +82,8 @@
                                             <td> {{ $loop->iteration }} </td>
                                             <td> {{ $cari->login_id }} </td>
                                             <td> {{ $cari->email }} </td>
-                                            <td> {{ $cari->points }} </td>
-                                            <td> {{ $cari->freepoints }} </td>
+                                            <td> {{ $cari->point }} </td>
+                                            <td> {{ $cari->freepoint }} </td>
                                             <td> {{ $cari->create_at }} </td>
                                         </tr>
                                     @endforeach

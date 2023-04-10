@@ -1,7 +1,7 @@
-<div class="col-md-9 grid-margin">
+<div class="col-9 p-0 ">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Search Users</h4>
+            <h4 class="card-title">Maintenance Control</h4>
             <form class="form-sample" action="/dashboard/admin" method="GET">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="search" placeholder="Enter Username"
@@ -11,6 +11,17 @@
                     </div>
                 </div>
                 <div class="dropdown-divider"></div>
+            </form>
+            <h4 class="card-title pt-3">Search Users</h4>
+            <form class="form-sample" action="/dashboard/admin" method="GET">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="search" placeholder="Enter Username"
+                        aria-label="Recipient's username" aria-describedby="basic-addon2" autofocus>
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+                {{-- <div class="dropdown-divider"></div> --}}
                 <div class="table-responsive">
                     <table class="table table-dark">
                         <thead>

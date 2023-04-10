@@ -1,5 +1,5 @@
 <div class="col-md-3 grid-margin stretch-card">
-    <div class="card" style="height: 25rem">
+    <div class="card" style="height: 25rem;">
         <div class="card-body">
             <h4 class="card-title">Informations</h4>
             <div class="d-flex align-items-center">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Rules\ReCaptcha;
 
 class RegisterController extends Controller
 {
@@ -18,7 +19,8 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'login_id' => 'required|min:6|max:20|unique:tuser',
             'email' => 'required|email|max:255',
-            'password' => 'required|min:6|max:50'
+            'password' => 'required|min:6|max:50',
+            'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
 
         $validasi = [
@@ -26,8 +28,8 @@ class RegisterController extends Controller
             'email' => $validatedData['email'],
             'login_pw' => md5($validatedData['password']),
             'password' => Hash::make($validatedData['password']),
-            'points' => 0,
-            'freepoints' => 0,
+            'Point' => 0,
+            'freepoint' => 5000,
             'create_at' => date('Y-m-d H:i:s')
         ];
 

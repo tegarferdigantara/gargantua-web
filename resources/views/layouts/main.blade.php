@@ -7,9 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Exceed-Rohan</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <!-- <link rel="stylesheet" href="../../../assets/vendors/mdi/css/materialdesignicons.min.css"> -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.9.97/css/materialdesignicons.min.css"
+        integrity="sha512-PhzMnIL3KJonoPVmEDTBYz7rxxne7E3Lc5NekqcT3nxSLRTN2h2bJKStWoy0RfS31Jd6nBguC32sL6iK1k2OXw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../../assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    {{-- <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet"> --}}
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End Plugin css for this page -->
@@ -30,8 +37,14 @@
             <!-- partial:../../partials/_navbar.html -->
             <nav class="navbar p-0 fixed-top d-flex flex-row">
                 <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-                    <a class="navbar-brand brand-logo-mini" href="../../../index.html"><img
-                            src="../../../assets/images/logo-mini.svg" alt="logo" /></a>
+                    @guest
+                        <a class="navbar-brand brand-logo-mini" href="/home"><img
+                                src="../../../assets/images/logo-mini.svg" alt="logo" /></a>
+                    @endguest
+                    @auth
+                        <a class="navbar-brand brand-logo-mini" href="/dashboard"><img
+                                src="../../../assets/images/logo-mini.svg" alt="logo" /></a>
+                    @endauth
                 </div>
                 <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button"
@@ -45,10 +58,27 @@
                             </form>
                         </li>
                     </ul>
+                    {{-- @auth
+                        @can('isAdmin', \App\Models\User::class)
+                            <ul class="navbar-nav navbar-nav-right {{ Request::is('dashboard/admin*') ? '' : 'd-none' }}">
+                                <li class="nav-item dropdown">
+                                    <div class="custom-control custom-switch d-lg-block">
+                                        <input type="checkbox" id="myCheckbox" name="myCheckbox" value="12"
+                                            data-toggle="toggle" data-on="Server<br>Online" data-off="Server<br>Offline"
+                                            data-onstyle="success" data-offstyle="danger">
+                                        <label>OFF<input type="checkbox" id="aksi" checked><span
+                                                class="lever"></span>ON</label>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        @endcan
+                    @endauth --}}
                     <ul class="navbar-nav navbar-nav-right">
                         @auth
                             <li class="nav-item dropdown">
                                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+
                                     <div class="navbar-profile">
                                         <img class="img-xs rounded-circle" src="../../../assets/images/faces/face28.jpg"
                                             alt="">
@@ -121,6 +151,12 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    @if (App\Models\IsMaintenance::select('maintenance')->first()->maintenance == 1)
+                        {!! Request::is('dashboard', 'home')
+                            ? '<div class="alert alert-danger alert-dismissible fade show col-md-12" role="alert"><b>INFO:</b> Server is Under Maintenance, Sorry for the Inconvenience 🙏🙏<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+                            : '' !!}
+                    @endif
+
                     @yield('content')
                 </div>
                 <!-- content-wrapper ends -->
@@ -139,6 +175,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
     <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
@@ -149,6 +186,7 @@
     <script src="../../../assets/js/misc.js"></script>
     <script src="../../../assets/js/settings.js"></script>
     <script src="../../../assets/js/todolist.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script> --}}
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
