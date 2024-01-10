@@ -16,10 +16,13 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
+        $validatedData = $request->validate([
+            'g-recaptcha-response' => ['required', new ReCaptcha]
+        ]);
+
         $credentials = $request->validate([
             'login_id' => 'required',
-            'password' => 'required',
-            'g-recaptcha-response' => ['required', new ReCaptcha]
+            'password' => 'required'
         ]);
 
 
